@@ -1,4 +1,4 @@
-# My portfolio - BookMySlot
+# BookMySlot
 
 BookMySlot is a booking portal developed in Django that enables users to create booking slots on specified date(s) and time(s) for their deliveries to a distribution center (DC)
 
