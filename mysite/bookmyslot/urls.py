@@ -11,6 +11,6 @@ urlpatterns = [
     path('new/',views.BookingCreate.as_view(),name='create'),
     path('',views.HomeView.as_view(),name='home'),
     path('about/',views.AboutView.as_view(),name='about'),
-    path('search/',views.search_bookings, name='search_bookings')
+    path('search/',views.BookingSearch.as_view(),name='search_bookings')
 
 ]
