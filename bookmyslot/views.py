@@ -92,7 +92,7 @@ class BookingDelete(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('bookmyslot:list')
 
 # We're using a function-based view to get search results for bookings, based on the keywords that a user enters
-# The user can search by delivery date or the booking number
+# The logged-in user can search by delivery date or the booking number
 @login_required
 def search(request):
     query = request.GET.get('q')
