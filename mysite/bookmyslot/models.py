@@ -25,8 +25,8 @@ class Booking(models.Model):
         return self.booking_number
 
     def save(self, **kwargs):
-        if not self.booking_number:
-            self.booking_number = f"{self.delivery_details:%Y%m%d%H%M}"
+
+        self.booking_number = f"{self.delivery_details:%Y%m%d%H%M}"
         super().save(**kwargs)
 
     def get_absolute_url(self):
