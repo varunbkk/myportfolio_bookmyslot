@@ -10,6 +10,7 @@ django-bootstrap3==15.0.0
 django-bootstrap4==3.0.1
 django-braces==1.14.0
 Faker==8.10.3
+gunicorn==20.1.0
 misaka==2.1.1
 Pillow==8.3.1
 psycopg2==2.8.6
