@@ -1,0 +1,22 @@
+{% extends 'bookmyslot/base.html' %}
+
+
+{% block content %}
+  <div class="jumbotron">
+
+    <h2>Please Login: </h2>
+    <h3>(You must be a Registered User)</h3>
+    <h3>(Please contact Customer Support for registration)</h3>
+    {% if form.errors %}
+        <p>Your username and password didn't match.Please try again!</p>
+    {% endif %}
+
+    <form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+        <input type="submit" class='btn btn-primary btn-lg' value="Login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+  </div>
+{% endblock %}

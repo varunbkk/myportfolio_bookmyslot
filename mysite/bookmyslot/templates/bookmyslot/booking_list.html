@@ -1,0 +1,48 @@
+{% extends 'bookmyslot/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <h3>My upcoming bookings:</h3>
+  <p></p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Booking Number</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Delivery Date</th>
+            <th scope="col">Delivery Time</th>
+          </tr>
+        </thead>
+        {% for booking in page_obj %}
+        <tbody>
+          <tr>
+            <td>{{ page_obj.start_index|add:forloop.counter0 }}</td>
+            <td><a href="{% url 'bookmyslot:detail' booking.id %}">{{ booking.booking_number }}</a></td>
+            <td>{{ booking.customer_name }}</td>
+            <td>{{ booking.delivery_details|date:'Y-m-d' }}</td>
+            <td>{{ booking.delivery_details|time:'H:i' }}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+      <div class="pagination">
+          <span class="step-links">
+              {% if page_obj.has_previous %}
+                  <a href="?page=1">&laquo; First</a>
+                  <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+              {% endif %}
+
+              <span class="current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+              </span>
+
+              {% if page_obj.has_next %}
+                  <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                  <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+              {% endif %}
+          </span>
+      </div>
+</div>
+
+{% endblock %}

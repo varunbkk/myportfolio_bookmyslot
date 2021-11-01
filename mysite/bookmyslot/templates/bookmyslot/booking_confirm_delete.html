@@ -1,0 +1,10 @@
+{% extends "bookmyslot/base.html" %}
+{% block content %}
+
+  <form action="" method="post" id="delete_form">{% csrf_token %}
+    <h3>Are you sure you want to delete Booking Number "{{ object }}"?</h3>
+    <input class='btn btn-success btn-lg' type="submit" value="Confirm" />
+    <button onclick="window.history.back();" class="btn btn-danger btn-lg" type="button" >Cancel</button>
+  </form>
+
+{% endblock %}

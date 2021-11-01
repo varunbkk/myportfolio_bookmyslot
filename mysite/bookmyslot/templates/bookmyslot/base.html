@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Base</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet"/>
+
+    {# Custom CSS#}
+    <link rel="stylesheet" href="{% static 'css/bookmyslot.css' %}">
+
+    {# Google Fonts#}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"></script>
+
+
+    {% block extrahead %}
+    {% endblock %}
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light navbar-light" style="background-color: #e3f2fd;">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'bookmyslot:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'admin:index' %}">Admin <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'bookmyslot:about' %}">About</a>
+          </li>
+          <!-- This makes sure only authenticated users can create and view bookings -->
+          {% if user.is_authenticated %}
+            {% if user.is_staff == False %}
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bookmyslot:create' %}">Create New Booking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bookmyslot:list' %}">My Bookings</a>
+            </li>
+          <!-- Admin users can view all past and upcoming bookings as opposed to normal (non-staff) users -->  
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bookmyslot:list' %}">All Current Bookings</a>
+            </li>
+            {% endif %}
+
+          {% else %}
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+          {% endif %}
+
+        </ul>
+      </div>
+
+      <form class="form-inline flex-nowrap mx-auto" method="GET" action="{% url 'bookmyslot:search_bookings' %}">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search Booking Number" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <div class="navbar-collapse collapse w-100 order-2 order-md-0 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link">Logged in as: {{ user.username }}</a>
+          </li>
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+
+    <div class="container">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+  </body>
+</html>

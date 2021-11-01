@@ -1,0 +1,32 @@
+{% extends 'bookmyslot/base.html' %}
+
+{% block content %}
+
+<div class="jumbotron" id="detail_page">
+
+  <h2>Booking Number: {{ booking_detail.booking_number }}</h2>
+  <h3>Details:</h3>
+  <p></p>
+  {% if user.is_staff %}
+  <p>Company Name: {{booking_detail.username}}</p>
+  <p>Customer Name: {{ booking_detail.customer_name }}</p>
+  <p>Quantity Of Pallets: {{ booking_detail.qty_plts }}</p>
+  <p>Shipment CBM: {{ booking_detail.cbm }}</p>
+  <p>Delivery Date: {{ booking_detail.delivery_details|date:'Y-m-d'}}</p>
+  <p>Delivery Time: {{ booking_detail.delivery_details|time:'H:i' }}</p>
+  {% else %}
+  <p>Customer Name: {{ booking_detail.customer_name }}</p>
+  <p>Quantity Of Pallets: {{ booking_detail.qty_plts }}</p>
+  <p>Shipment CBM: {{ booking_detail.cbm }}</p>
+  <p>Delivery Date: {{ booking_detail.delivery_details|date:'Y-m-d'}}</p>
+  <p>Delivery Time: {{ booking_detail.delivery_details|time:'H:i' }}</p>
+  {% endif %}
+</div>
+
+<div class="container">
+  <a class="btn btn-primary btn-lg" href="{% url 'bookmyslot:update' pk=booking_detail.pk %}">Update Booking</a>
+  <a class="btn btn-danger btn-lg" href="{% url 'bookmyslot:delete' pk=booking_detail.pk %}">Delete Booking</a>
+
+</div>
+
+{% endblock %}

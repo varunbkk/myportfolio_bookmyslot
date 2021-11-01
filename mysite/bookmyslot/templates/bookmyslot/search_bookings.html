@@ -1,0 +1,33 @@
+{% extends 'bookmyslot/base.html' %}
+{% block content %}
+
+<div class="jumbotron">
+  <h3>Bookings found:</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Booking Number</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Delivery Date</th>
+        <th scope="col">Delivery Time</th>
+      </tr>
+    </thead>
+    {% for booking in result %}
+    <tbody>
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td><a href="{% url 'bookmyslot:detail' booking.id %}">{{ booking.booking_number }}</a></td>
+        <td>{{ booking.customer_name }}</td>
+        <td>{{ booking.delivery_details|date:'Y-m-d' }}</td>
+        <td>{{ booking.delivery_details|time:'H:i' }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
+
+
+
+{% endblock %}

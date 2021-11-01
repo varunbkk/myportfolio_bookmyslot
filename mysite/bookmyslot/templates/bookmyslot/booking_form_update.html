@@ -1,0 +1,18 @@
+{% extends 'bookmyslot/base.html' %}
+{% load bootstrap4 %}
+
+{% block extrahead %}
+{{ form.media }}
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <h3>Please enter the revised booking details below:</h3>
+  <p></p>
+  <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Update Booking">
+  </form>
+</div>
+{% endblock %}
