@@ -1,0 +1,53 @@
+body
+{
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em
+}
+
+#about
+{
+  text-align: center;
+  padding-top: 25px
+
+}
+
+#about_body
+{
+  text-align: center;
+
+}
+
+#homepage
+{
+  text-align: center;
+  padding-top: 25px
+
+}
+
+
+#navbarNav
+{
+  color:red;
+}
+
+.jumbotron
+{
+font-size: 1.1em;
+
+}
+
+#delete_form
+{
+  text-align: center;
+  padding-top: 25px
+}
+
+td,tr
+{
+  text-align: center;
+}
+
+.form-inline
+{
+  text-align: center;
+}
