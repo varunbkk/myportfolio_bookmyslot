@@ -27,14 +27,14 @@ class BookingCreate(LoginRequiredMixin,CreateView):
 
     # This function returns a dictionary that is passed to the __init__ portion of our Booking form
     # We need to pass the current username to the form so that only the customers belonging to that specific username
-    # can be visible in the drop-down list
+    # can be visible in the drop-down list, during creation of a booking
 
     def get_form_kwargs(self, **kwargs):
         form_kwargs = super(BookingCreate,self).get_form_kwargs(**kwargs)
         form_kwargs['username'] = self.request.user
         return form_kwargs
 
-    # This function validates the form before the form data is written to the database/model
+    # This function validates the form before it's form data is written to the database/model
     # The form data is only stored in the memory (with the commit=False statement)
     # It also insures that the user creating the form is the same as the currently logged in user
     def form_valid(self, form):
@@ -46,7 +46,7 @@ class BookingCreate(LoginRequiredMixin,CreateView):
 class BookingList(LoginRequiredMixin,ListView):
     login_url = '/login'
     model = Booking
-    # We paginate the list of bookings and limit 3 booking per each page
+    # We paginate the list of all bookings and limit the list to display 3 booking per page
     paginate_by = 3
     template_name = 'bookmyslot/booking_list.html'
     context_object_name = 'bookings'

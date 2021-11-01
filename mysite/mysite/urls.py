@@ -18,6 +18,7 @@ from django.urls import path,include
 from bookmyslot import views
 from django.contrib.auth import views as auth_views
 
+# The base URL's
 urlpatterns = [
     path('',include('bookmyslot.urls')),
     path('accounts/login/',auth_views.LoginView.as_view(),name='login'),

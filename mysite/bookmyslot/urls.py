@@ -1,8 +1,10 @@
 from . import views
 from django.urls import path
 
+# We specify an app name to reference the URL we need in our HTML templates
 app_name = 'bookmyslot'
 
+# The app(bookmyslot) specific URL's
 urlpatterns = [
     path('mybookings/',views.BookingList.as_view(),name='list'),
     path('mybookings/<int:pk>/',views.BookingDetail.as_view(),name='detail'),
