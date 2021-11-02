@@ -45,7 +45,7 @@
           </li>
           <!-- This makes sure only authenticated users can create and view bookings -->
           <!-- Non-staff (regular) users can only view and edit upcoming bookings -->
-
+          
           {% if user.is_authenticated %}
             {% if user.is_staff == False %}
 
