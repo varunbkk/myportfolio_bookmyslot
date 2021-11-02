@@ -13,11 +13,15 @@ from django.db.models import Q
 import datetime as dt
 from django.utils import timezone
 
-class AboutView(TemplateView):
-    template_name = 'about.html'
 
 class HomeView(TemplateView):
     template_name = 'index.html'
+
+class ThanksView(TemplateView):
+    template_name = 'thanks.html'
+
+class WelcomeView(TemplateView):
+    template_name = 'welcome.html'
 
 class BookingCreate(LoginRequiredMixin,CreateView):
     login_url = '/login'

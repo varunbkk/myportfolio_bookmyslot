@@ -24,7 +24,7 @@ TEMPLATE_DIR = Path(BASE_DIR/'bookmyslot/templates/bookmyslot')
 SECRET_KEY = 'django-insecure-b2s7)q3h8+!29o3d4yo#fo#_d84d*pn-9+*7-2a(t%qh24(8t^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -122,8 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/welcome/'
+LOGOUT_REDIRECT_URL = '/thanks/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
