@@ -34,18 +34,23 @@
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
 
+          {% if user.is_authenticated %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'bookmyslot:welcome' %}">Home</a>
+          </li>
+
+          {% else %}
+
           <li class="nav-item">
             <a class="nav-link" href="{% url 'bookmyslot:home' %}">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'admin:index' %}">Admin <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'bookmyslot:about' %}">About</a>
-          </li>
+
+          {% endif %}
+
           <!-- This makes sure only authenticated users can create and view bookings -->
           <!-- Non-staff (regular) users can only view and edit upcoming bookings -->
-          
+
           {% if user.is_authenticated %}
             {% if user.is_staff == False %}
 
@@ -77,10 +82,10 @@
 
       <div class="navbar-collapse collapse w-100 order-2 order-md-0 dual-collapse2">
         <ul class="navbar-nav ml-auto">
-          {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link">Logged in as: {{ user.username }}</a>
+            <a class="nav-link" href="{% url 'admin:index' %}">Admin <span class="sr-only">(current)</span></a>
           </li>
+          {% if user.is_authenticated %}
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           {% endif %}
         </ul>

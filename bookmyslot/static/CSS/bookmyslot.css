@@ -4,7 +4,7 @@ body
   font-size: 1.2em
 }
 
-#about
+#about,#thanks
 {
   text-align: center;
   padding-top: 25px
@@ -24,7 +24,11 @@ body
 
 }
 
+#welcome
+{
+  text-align: left;
 
+}
 #navbarNav
 {
   color:red;
