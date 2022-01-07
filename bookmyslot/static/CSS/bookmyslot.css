@@ -4,7 +4,7 @@ body
   font-size: 1.2em
 }
 
-#about
+#about,#thanks,#homepage,#delete_form
 {
   text-align: center;
   padding-top: 25px
@@ -17,17 +17,10 @@ body
 
 }
 
-#homepage
+#welcome
 {
-  text-align: center;
-  padding-top: 25px
+  text-align: left;
 
-}
-
-
-#navbarNav
-{
-  color:red;
 }
 
 .jumbotron
@@ -36,11 +29,6 @@ font-size: 1.1em;
 
 }
 
-#delete_form
-{
-  text-align: center;
-  padding-top: 25px
-}
 
 td,tr
 {
