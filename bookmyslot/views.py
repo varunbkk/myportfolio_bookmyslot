@@ -13,11 +13,15 @@ from django.db.models import Q
 import datetime as dt
 from django.utils import timezone
 
-class AboutView(TemplateView):
-    template_name = 'about.html'
 
 class HomeView(TemplateView):
     template_name = 'index.html'
+
+class ThanksView(TemplateView):
+    template_name = 'thanks.html'
+
+class WelcomeView(TemplateView):
+    template_name = 'welcome.html'
 
 class BookingCreate(LoginRequiredMixin,CreateView):
     login_url = '/login'
@@ -92,7 +96,7 @@ class BookingDelete(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('bookmyslot:list')
 
 # We're using a function-based view to get search results for bookings, based on the keywords that a user enters
-# The user can search by delivery date or the booking number
+# The logged-in user can search by delivery date or the booking number
 @login_required
 def search(request):
     query = request.GET.get('q')

@@ -12,7 +12,8 @@ urlpatterns = [
     path('delete/<int:pk>/',views.BookingDelete.as_view(),name='delete'),
     path('new/',views.BookingCreate.as_view(),name='create'),
     path('',views.HomeView.as_view(),name='home'),
-    path('about/',views.AboutView.as_view(),name='about'),
+    path('welcome/',views.WelcomeView.as_view(),name='welcome'),
+    path('thanks/',views.ThanksView.as_view(),name='thanks'),
     path('search/',views.search,name='search_bookings')
 
 ]
