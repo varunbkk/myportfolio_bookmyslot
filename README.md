@@ -4,4 +4,4 @@ BookMySlot is an online booking portal that enables users to create booking slot
 
 ### Demo
 
-![](BookMySlot_Demo.gif)
+![](BookMySlot_Demo_Final.gif)
